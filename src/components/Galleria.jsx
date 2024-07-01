@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../galleria.css";
+import "animate.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { shuffle } from "lodash";
 
@@ -84,14 +85,18 @@ const Galleria = () => {
         <CloseIcon onClick={() => setModel(false)} />
       </div>
 
-      <div className="galleria md:grid lg:grid-cols-3 md:grid-cols-2">
+      <div className="galleria md:grid lg:grid-cols-3 md:grid-cols-2 animate__animated animate__fadeIn animate__delay-500ms">
         {data.map((item, index) => (
           <div
             className="pics p-2 md:p-1"
             key={index}
             onClick={() => getImg(item.imgSrc)}
           >
-            <img src={item.imgSrc} alt={`Gallery ${item.id}`} style={{ width: "100%" }} />
+            <img
+              src={item.imgSrc}
+              alt={`Gallery ${item.id}`}
+              style={{ width: "100%" }}
+            />
           </div>
         ))}
       </div>
