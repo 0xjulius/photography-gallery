@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../galleria.css";
 import CloseIcon from "@mui/icons-material/Close";
+import { shuffle } from "lodash";
 
 import Img1 from "../img/img1.jpg";
 import Img2 from "../img/img2.jpg";
@@ -32,123 +33,44 @@ import Img27 from "../img/img27.jpg";
 import Img28 from "../img/img28.jpg";
 
 const Galleria = () => {
-  let data = [
-    {
-      id: 1,
-      imgSrc: Img1,
-    },
-    {
-      id: 2,
-      imgSrc: Img2,
-    },
-    {
-      id: 3,
-      imgSrc: Img3,
-    },
-    {
-      id: 4,
-      imgSrc: Img4,
-    },
-    {
-      id: 5,
-      imgSrc: Img5,
-    },
-    {
-      id: 6,
-      imgSrc: Img6,
-    },
-    {
-      id: 7,
-      imgSrc: Img7,
-    },
-    {
-      id: 8,
-      imgSrc: Img8,
-    },
-    {
-      id: 9,
-      imgSrc: Img9,
-    },
-    {
-      id: 10,
-      imgSrc: Img10,
-    },
-    {
-      id: 11,
-      imgSrc: Img11,
-    },
-    {
-      id: 12,
-      imgSrc: Img12,
-    },
-    {
-      id: 13,
-      imgSrc: Img13,
-    },
-    {
-      id: 14,
-      imgSrc: Img14,
-    },
-    {
-      id: 15,
-      imgSrc: Img15,
-    },
-    {
-      id: 16,
-      imgSrc: Img16,
-    },
-    {
-      id: 17,
-      imgSrc: Img17,
-    },
-    {
-      id: 18,
-      imgSrc: Img18,
-    },
-    {
-      id: 19,
-      imgSrc: Img19,
-    },
-    {
-      id: 20,
-      imgSrc: Img20,
-    },
-    {
-      id: 21,
-      imgSrc: Img21,
-    },
-    {
-      id: 22,
-      imgSrc: Img22,
-    },
-    {
-      id: 23,
-      imgSrc: Img23,
-    },
-    {
-      id: 24,
-      imgSrc: Img24,
-    },
-    {
-      id: 25,
-      imgSrc: Img25,
-    },
-    {
-      id: 26,
-      imgSrc: Img26,
-    },
-    {
-      id: 27,
-      imgSrc: Img27,
-    },
-    {
-      id: 28,
-      imgSrc: Img28,
-    },
+  let initialData = [
+    { id: 1, imgSrc: Img1 },
+    { id: 2, imgSrc: Img2 },
+    { id: 3, imgSrc: Img3 },
+    { id: 4, imgSrc: Img4 },
+    { id: 5, imgSrc: Img5 },
+    { id: 6, imgSrc: Img6 },
+    { id: 7, imgSrc: Img7 },
+    { id: 8, imgSrc: Img8 },
+    { id: 9, imgSrc: Img9 },
+    { id: 10, imgSrc: Img10 },
+    { id: 11, imgSrc: Img11 },
+    { id: 12, imgSrc: Img12 },
+    { id: 13, imgSrc: Img13 },
+    { id: 14, imgSrc: Img14 },
+    { id: 15, imgSrc: Img15 },
+    { id: 16, imgSrc: Img16 },
+    { id: 17, imgSrc: Img17 },
+    { id: 18, imgSrc: Img18 },
+    { id: 19, imgSrc: Img19 },
+    { id: 20, imgSrc: Img20 },
+    { id: 21, imgSrc: Img21 },
+    { id: 22, imgSrc: Img22 },
+    { id: 23, imgSrc: Img23 },
+    { id: 24, imgSrc: Img24 },
+    { id: 25, imgSrc: Img25 },
+    { id: 26, imgSrc: Img26 },
+    { id: 27, imgSrc: Img27 },
+    { id: 28, imgSrc: Img28 },
   ];
 
+  const [data, setData] = useState([]);
   const [model, setModel] = useState(false);
   const [tempimgSrc, setTempImgSrc] = useState("");
+
+  useEffect(() => {
+    setData(shuffle(initialData));
+  }, []);
 
   const getImg = (imgSrc) => {
     setTempImgSrc(imgSrc);
@@ -158,7 +80,7 @@ const Galleria = () => {
   return (
     <>
       <div className={model ? "model open" : "model"}>
-        <img src={tempimgSrc} />
+        <img src={tempimgSrc} alt="Selected" />
         <CloseIcon onClick={() => setModel(false)} />
       </div>
 
@@ -169,7 +91,7 @@ const Galleria = () => {
             key={index}
             onClick={() => getImg(item.imgSrc)}
           >
-            <img src={item.imgSrc} style={{ width: "100%" }} />
+            <img src={item.imgSrc} alt={`Gallery ${item.id}`} style={{ width: "100%" }} />
           </div>
         ))}
       </div>
