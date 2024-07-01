@@ -1,3 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  background-color: #282828;
+}
+
+body {
+  font-family: "Rajdhani";
+}
+
+.h1 {
+  font-family: "Orbitron";
+}
+
+.text-gradient {
+  background: #1d2a47;
+  background: linear-gradient(135deg, #1d2a47, #33bccf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
