@@ -1,4 +1,5 @@
 import Galleria from "./components/Galleria.jsx";
+import Footer from "./components/Footer.jsx";
 export default function App() {
   return (
     <>
@@ -9,6 +10,7 @@ export default function App() {
         Welcome to my photography gallery!
       </h2>
       <Galleria />
+      <Footer />
     </>
   );
 }
